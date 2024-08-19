@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: spaceport_nexus
+    build:
+      context: .
+    ports:
+      - "9999:5000"
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=api:create_app
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Need this to run docker commands
+      - api-db:/app/instance # Volume for storing the SQLite database
+
+volumes:
+  nexus-db:
+    name: spaceport-api-db
