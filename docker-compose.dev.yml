@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    container_name: spaceport_nexus_dev
+    container_name: spaceport_api_dev
     build:
       context: .
       dockerfile: dockerfile.dev

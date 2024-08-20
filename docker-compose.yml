@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    container_name: spaceport_nexus
+    container_name: spaceport_api
     build:
       context: .
     ports:

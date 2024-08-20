@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from logger import logger
+from .logger import logger
 from flask_cors import CORS
 
 def create_app(test_config=None):
@@ -32,8 +32,8 @@ def create_app(test_config=None):
     db_path = app.config['DATABASE']
     
     # Uncomment to drop DB before each run
-    # with app.app_context():
-    #     db.init_db()
+    with app.app_context():
+        db.init_db()
 
     if not os.path.exists(db_path):
         logger.info('Initializing DB')
