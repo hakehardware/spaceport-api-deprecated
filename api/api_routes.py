@@ -4,6 +4,7 @@ from flask import (
 from .db import get_db
 from .api_db import APIDB
 from .logger import logger
+import traceback
 
 api_routes = Blueprint('api_routes', __name__)
 
@@ -16,7 +17,12 @@ def insert(entity):
     data = request.json
 
     insert_methods = {
-        'event': APIDB.insert_event
+        'event': APIDB.insert_event,
+        'container': APIDB.insert_container,
+        'farmer': APIDB.insert_farmer,
+        'farm': APIDB.insert_farm,
+        'incomplete_sector': APIDB.insert_incomplete_sector,
+        'complete_sector': APIDB.update_complete_sector
     }
 
     # Retrieve the appropriate insertion method based on the entity
